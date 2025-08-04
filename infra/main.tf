@@ -8,6 +8,10 @@ module "vpc" {
   public_subnet_names   = var.public_subnet_names
   private_subnets_names = var.private_subnets_names
 }
+module "iam" {
+  source       = "./modules/iam"
+  project_name = var.project_name
+}
 module "sg" {
   source       = "./modules/sg"
   vpc_id       = module.vpc.vpc_id
@@ -35,6 +39,6 @@ module "app_server" {
   app_asg_max_size          = var.app_asg_max_size
   app_asg_desired_capacity  = var.app_asg_desired_capacity
   app_tg_arn                = module.alb.app_tg_arn
-  app_instance_profile_name = "app-instance-profile"
+  app_instance_profile_name = module.iam.ec2_instance_profile_name
   depends_on                = [module.alb, module.sg, module.vpc]
 }
