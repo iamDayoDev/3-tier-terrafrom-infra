@@ -23,3 +23,18 @@ module "alb" {
   private_subnet_ids = module.vpc.private_subnet_ids
   depends_on         = [module.sg]
 }
+module "app_server" {
+  source                    = "./modules/app_server"
+  project_name              = var.project_name
+  vpc_id                    = module.vpc.vpc_id
+  app_tier_sg_id            = module.sg.app_tier_sg_id
+  private_subnet_ids        = slice(module.vpc.private_subnet_ids, 0, length(var.azs))
+  internal_alb_sg_id        = module.sg.internal_alb_sg_id
+  app_instance_type         = var.app_instance_type
+  app_asg_min_size          = var.app_asg_min_size
+  app_asg_max_size          = var.app_asg_max_size
+  app_asg_desired_capacity  = var.app_asg_desired_capacity
+  app_tg_arn                = module.alb.app_tg_arn
+  app_instance_profile_name = "app-instance-profile"
+  depends_on                = [module.alb, module.sg, module.vpc]
+}

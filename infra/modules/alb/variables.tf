@@ -18,3 +18,4 @@ variable "private_subnet_ids" {
   description = "List of private subnet IDs for the internal ALB"
   type        = list(string)
 }
+

@@ -11,7 +11,7 @@ resource "aws_lb" "internal_alb" {
     }
 }
 
-resource "aws_lb_target_group" "app" {
+resource "aws_lb_target_group" "app_tg" {
     name     = "${var.project_name}-app-tg"
     port     = 4000
     protocol = "HTTP"
@@ -39,13 +39,13 @@ resource "aws_lb_listener" "app_http" {
 
     default_action {
         type             = "forward"
-        target_group_arn = aws_lb_target_group.app.arn
+        target_group_arn = aws_lb_target_group.app_tg.arn
     }
 }
 
 resource "aws_lb" "external_alb" {
     name               = "${var.project_name}-external-alb"
-    internal           = true
+    internal           = false
     load_balancer_type = "application"
     security_groups    = [var.external_alb_sg_id]
     subnets            = var.private_subnet_ids
@@ -56,7 +56,7 @@ resource "aws_lb" "external_alb" {
     }
 }
 
-resource "aws_lb_target_group" "web" {
+resource "aws_lb_target_group" "web_tg" {
     name     = "${var.project_name}-web-tg"
     port     = 80
     protocol = "HTTP"
@@ -84,7 +84,7 @@ resource "aws_lb_listener" "web_http" {
 
     default_action {
         type             = "forward"
-        target_group_arn = aws_lb_target_group.web.arn
+        target_group_arn = aws_lb_target_group.web_tg.arn
     }
 }
 
