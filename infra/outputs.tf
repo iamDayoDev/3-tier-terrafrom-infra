@@ -1,8 +1,8 @@
-output "app_tg_arn" {
-  description = "ARN of the application target group"
-  value       = module.alb.app_tg_arn
+output "internal_alb_dns_name" {
+  description = "DNS name of the Application Load Balancer"
+  value       = module.alb.internal_alb_dns_name
 }
-output "web_tg_arn" {
-  description = "ARN of the web target group"
-  value       = module.alb.web_tg_arn
+output "external_alb_dns_name" {
+  description = "DNS name of the External Application Load Balancer"
+  value       = module.alb.external_alb_dns_name
 }

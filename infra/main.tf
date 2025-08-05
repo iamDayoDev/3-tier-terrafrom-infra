@@ -40,7 +40,7 @@ module "app_server" {
   app_asg_desired_capacity = var.app_asg_desired_capacity
   app_tg_arn               = module.alb.app_tg_arn
   instance_profile_name    = module.iam.ec2_instance_profile_name
-  depends_on               = [module.alb, module.sg, module.vpc]
+  depends_on               = [module.iam, module.alb, module.sg, module.vpc]
 }
 module "web_server" {
   source                   = "./modules/web_server"
@@ -55,5 +55,5 @@ module "web_server" {
   web_asg_desired_capacity = var.web_asg_desired_capacity
   web_tg_arn               = module.alb.web_tg_arn
   instance_profile_name    = module.iam.ec2_instance_profile_name
-  depends_on               = [module.alb, module.sg, module.vpc]
+  depends_on               = [module.app_server]
 }
