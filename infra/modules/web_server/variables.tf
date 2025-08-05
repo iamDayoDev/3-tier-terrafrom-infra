@@ -6,35 +6,36 @@ variable "vpc_id" {
   description = "VPC ID where the resources will be created"
   type        = string
 }
-variable "internal_alb_sg_id" {
+
+variable "external_alb_sg_id" {
   description = "Security group ID for the internal ALB"
   type        = string
 }
-variable "app_tier_sg_id" {
-  description = "Security group ID for the App Tier"
+variable "web_tier_sg_id" {
+  description = "Security group ID for the web Tier"
   type        = string
 }
-variable "app_instance_type" {
+variable "web_instance_type" {
   description = "Instance type for the application servers"
   type        = string
 }
-variable "private_subnet_ids" {
+variable "public_subnet_ids" {
   description = "List of private subnet IDs"
   type        = list(string)
 }
-variable "app_asg_min_size" {
+variable "web_asg_min_size" {
   description = "Minimum size of the application Auto Scaling group"
   type        = number
 }
-variable "app_asg_max_size" {
+variable "web_asg_max_size" {
   description = "Minimum size of the application Auto Scaling group"
   type        = number
 }
-variable "app_asg_desired_capacity" {
+variable "web_asg_desired_capacity" {
   description = "Minimum size of the application Auto Scaling group"
   type        = number
 }
-variable "app_tg_arn" {
+variable "web_tg_arn" {
   description = "ARN of the application target group"
   type        = string
 }

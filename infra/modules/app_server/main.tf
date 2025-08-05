@@ -13,7 +13,7 @@ resource "aws_launch_template" "app" {
     }
 
     iam_instance_profile {
-        name = var.app_instance_profile_name
+        name = var.instance_profile_name
     }
 }
 

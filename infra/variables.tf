@@ -48,3 +48,19 @@ variable "app_asg_desired_capacity" {
   description = "Minimum size of the application Auto Scaling group"
   type        = number
 }
+variable "web_instance_type" {
+  description = "Instance type for the application servers"
+  type        = string
+}
+variable "web_asg_min_size" {
+  description = "Minimum size of the application Auto Scaling group"
+  type        = number
+}
+variable "web_asg_max_size" {
+  description = "Minimum size of the application Auto Scaling group"
+  type        = number
+}
+variable "web_asg_desired_capacity" {
+  description = "Minimum size of the application Auto Scaling group"
+  type        = number
+}

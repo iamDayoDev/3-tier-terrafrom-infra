@@ -28,17 +28,32 @@ module "alb" {
   depends_on         = [module.sg]
 }
 module "app_server" {
-  source                    = "./modules/app_server"
-  project_name              = var.project_name
-  vpc_id                    = module.vpc.vpc_id
-  app_tier_sg_id            = module.sg.app_tier_sg_id
-  private_subnet_ids        = slice(module.vpc.private_subnet_ids, 0, length(var.azs))
-  internal_alb_sg_id        = module.sg.internal_alb_sg_id
-  app_instance_type         = var.app_instance_type
-  app_asg_min_size          = var.app_asg_min_size
-  app_asg_max_size          = var.app_asg_max_size
-  app_asg_desired_capacity  = var.app_asg_desired_capacity
-  app_tg_arn                = module.alb.app_tg_arn
-  app_instance_profile_name = module.iam.ec2_instance_profile_name
-  depends_on                = [module.alb, module.sg, module.vpc]
+  source                   = "./modules/app_server"
+  project_name             = var.project_name
+  vpc_id                   = module.vpc.vpc_id
+  app_tier_sg_id           = module.sg.app_tier_sg_id
+  private_subnet_ids       = slice(module.vpc.private_subnet_ids, 0, length(var.azs))
+  internal_alb_sg_id       = module.sg.internal_alb_sg_id
+  app_instance_type        = var.app_instance_type
+  app_asg_min_size         = var.app_asg_min_size
+  app_asg_max_size         = var.app_asg_max_size
+  app_asg_desired_capacity = var.app_asg_desired_capacity
+  app_tg_arn               = module.alb.app_tg_arn
+  instance_profile_name    = module.iam.ec2_instance_profile_name
+  depends_on               = [module.alb, module.sg, module.vpc]
+}
+module "web_server" {
+  source                   = "./modules/web_server"
+  project_name             = var.project_name
+  vpc_id                   = module.vpc.vpc_id
+  web_tier_sg_id           = module.sg.web_tier_sg_id
+  public_subnet_ids        = module.vpc.public_subnet_ids
+  external_alb_sg_id       = module.sg.external_alb_sg_id
+  web_instance_type        = var.web_instance_type
+  web_asg_min_size         = var.web_asg_min_size
+  web_asg_max_size         = var.web_asg_max_size
+  web_asg_desired_capacity = var.web_asg_desired_capacity
+  web_tg_arn               = module.alb.web_tg_arn
+  instance_profile_name    = module.iam.ec2_instance_profile_name
+  depends_on               = [module.alb, module.sg, module.vpc]
 }
