@@ -14,3 +14,15 @@ web_instance_type        = "t2.micro"
 web_asg_desired_capacity = 1
 web_asg_min_size         = 1
 web_asg_max_size         = 1
+cluster_identifier       = "app-db"
+database_name            = "appdb"
+master_username          = "admin"
+master_password          = "password123"
+db_allocated_storage     = 20
+instance_class           = "db.t3.medium"
+db_engine                = "aurora-mysql"
+db_engine_version        = "8.0.mysql_aurora.3.07.1"
+
+
+
+

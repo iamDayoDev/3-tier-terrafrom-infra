@@ -57,3 +57,18 @@ module "web_server" {
   instance_profile_name    = module.iam.ec2_instance_profile_name
   depends_on               = [module.app_server]
 }
+module "database" {
+  source               = "./modules/database"
+  project_name         = var.project_name
+  cluster_identifier   = var.cluster_identifier
+  private_subnet_ids   = module.vpc.private_subnet_ids
+  db_tier_sg_id        = [module.sg.db_tier_sg_id]
+  db_engine            = var.db_engine
+  db_engine_version    = var.db_engine_version
+  database_name        = var.database_name
+  master_username      = var.master_username
+  master_password      = var.master_password
+  db_allocated_storage = var.db_allocated_storage
+  instance_class       = var.instance_class
+  depends_on           = [module.vpc, module.sg]
+}
