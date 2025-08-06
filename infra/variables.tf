@@ -82,12 +82,12 @@ variable "database_name" {
   type        = string
   default     = "three-tier-db"
 }
-variable "master_username" {
+variable "db_username" {
   description = "Master username for the RDS cluster"
   type        = string
   default     = "admin"
 }
-variable "master_password" {
+variable "db_password" {
   description = "Master password for the RDS cluster"
   type        = string
   default     = "password"

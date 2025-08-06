@@ -2,8 +2,8 @@ resource "aws_rds_cluster" "aurora_mysql" {
     cluster_identifier      = var.cluster_identifier
     engine                 = var.db_engine
     engine_version         = var.db_engine_version
-    master_username        = var.master_username
-    master_password        = var.master_password
+    master_username        = var.db_username
+    master_password        = var.db_password
     db_subnet_group_name   = aws_db_subnet_group.aurora_subnet_group.id
     database_name          = var.database_name
     vpc_security_group_ids = var.db_tier_sg_id

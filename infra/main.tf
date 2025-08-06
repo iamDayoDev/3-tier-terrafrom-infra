@@ -66,9 +66,19 @@ module "database" {
   db_engine            = var.db_engine
   db_engine_version    = var.db_engine_version
   database_name        = var.database_name
-  master_username      = var.master_username
-  master_password      = var.master_password
+  db_username          = var.db_username
+  db_password          = var.db_password
   db_allocated_storage = var.db_allocated_storage
   instance_class       = var.instance_class
   depends_on           = [module.vpc, module.sg]
+}
+module "aws_ssm_parameter" {
+  source           = "./modules/ssm"
+  db_username      = var.db_username
+  db_password      = var.db_password
+  internal_alb_dns = module.alb.internal_alb_dns_name
+  db_host_endpoint = module.database.db_host_endpoint
+  db_database      = var.database_name
+  depends_on       = [module.app_server]
+
 }
