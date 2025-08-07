@@ -3,7 +3,7 @@ set -e
 
 REGION="us-east-1"
 APP_DIR="/home/ec2-user/app"
-APP_PATH="$APP_DIR/application-code/app-tier"
+APP_PATH="$APP_DIR/app-tier"
 
 echo "=== Updating system and installing packages ==="
 sudo dnf update -y
@@ -20,7 +20,7 @@ curl -fsSL https://rpm.nodesource.com/setup_16.x | bash -
 sudo dnf install -y nodejs
 
 echo "=== Cloning app repo ==="
-sudo -u ec2-user git clone https://github.com/OjoOluwagbenga700/aws-three-tier-web-source-code.git $APP_DIR || true
+sudo -u ec2-user git clone https://github.com/iamDayoDev/apps-code-3-tier-aws-project.git $APP_DIR || true
 
 echo "=== Installing Node.js dependencies ==="
 cd $APP_PATH

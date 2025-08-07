@@ -2,8 +2,8 @@
 set -euxo pipefail
 
 # Variables
-REPO_URL="https://github.com/OjoOluwagbenga700/aws-three-tier-web-source-code.git"
-FRONTEND_DIR="/home/ec2-user/aws-three-tier-web-source-code/application-code/web-tier"
+REPO_URL="https://github.com/iamDayoDev/apps-code-3-tier-aws-project.git"
+FRONTEND_DIR="/home/ec2-user/apps-code-3-tier-aws-project/web-tier"
 NGINX_CONF="/home/ec2-user/aws-three-tier-web-source-code/application-code/nginx.conf"
 
 # Update system packages and install prerequisites

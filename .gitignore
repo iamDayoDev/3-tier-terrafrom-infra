@@ -1,0 +1,20 @@
+# Terraform .terraform directory
+.terraform/
+
+# Terraform lock file
+.terraform.lock.hcl
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+
+# Terraform plan files
+*.tfplan
+
+# Variable definition files that might contain sensitive data
+# Consider if you want to ignore all .tfvars or only specific ones.
+# If sensitive data is in .tfvars, it's generally best to use environment variables or a secrets management solution.
+# *.tfvars
