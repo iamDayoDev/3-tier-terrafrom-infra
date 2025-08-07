@@ -28,12 +28,15 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
+        working-directory: infra
 
       - name: Validate Terraform configuration
         run: terraform validate
+        working-directory: infra
 
       - name: Plan Terraform changes
         run: terraform plan
+        working-directory: infra
 
       # - name: Apply Terraform changes
       #   run: terraform apply -auto-approve
