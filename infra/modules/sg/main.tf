@@ -62,7 +62,7 @@ resource "aws_security_group" "web_tier_sg" {
 }
 
 resource "aws_security_group" "internal_alb_sg" {
-    name        = "${var.project_name}-external-alb-sg"
+    name        = "${var.project_name}-internal-alb-sg"
     description = "Security group for External ALB"
     vpc_id      = var.vpc_id
 
