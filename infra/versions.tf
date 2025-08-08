@@ -5,13 +5,6 @@ terraform {
       version = "~> 5.0"
     }
   }
-}
-
-provider "aws" {
-  region = var.region
-}
-
-terraform {
   backend "s3" {
     bucket         = "three-teir-state-bucket-123456"
     key            = "staging/terraform.tfstate"
@@ -19,4 +12,8 @@ terraform {
     dynamodb_table = "terraform-locks-table"
     encrypt        = true
   }
+}
+
+provider "aws" {
+  region = var.region
 }

@@ -17,7 +17,7 @@ jobs:
 
       - name: Check if Terraform state file exists
         run: |
-          if aws s3 ls s3://your-bucket-name/path/to/your.tfstate; then
+          if aws s3 ls s3://three-teir-state-bucket-123456/staging/terraform.tfstate; then
             echo "State file exists. Proceeding with destroy."
           else
             echo "No state file found. Skipping destroy."
