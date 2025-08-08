@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_IN_AUTOMATION: true
+      aws-region: us-east-1
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     steps:
       - name: Checkout repository
@@ -27,8 +30,6 @@ jobs:
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         working-directory: infra
-        env:
-          aws-region: us-east-1
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+       
+       
           
