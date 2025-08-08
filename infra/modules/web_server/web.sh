@@ -4,7 +4,7 @@ set -euxo pipefail
 # Variables
 REPO_URL="https://github.com/iamDayoDev/apps-code-3-tier-aws-project.git"
 FRONTEND_DIR="/home/ec2-user/apps-code-3-tier-aws-project/web-tier"
-NGINX_CONF="/home/ec2-user/aws-three-tier-web-source-code/application-code/nginx.conf"
+NGINX_CONF="/home/ec2-user/apps-code-3-tier-aws-project/nginx.conf"
 
 # Update system packages and install prerequisites
 sudo dnf update -y
@@ -19,7 +19,7 @@ sudo dnf install -y nodejs
 
 # Clone, build and copy frontend files as ec2-user
 if [ ! -d "$FRONTEND_DIR" ]; then
-  sudo -u ec2-user git clone "$REPO_URL" /home/ec2-user/aws-three-tier-web-source-code
+  sudo -u ec2-user git clone "$REPO_URL" /home/ec2-user/apps-code-3-tier-aws-project
 fi
 
 sudo -u ec2-user bash -c "
