@@ -10,3 +10,13 @@ terraform {
 provider "aws" {
   region = var.region
 }
+
+terraform {
+  backend "s3" {
+    bucket         = "three-teir-state-bucket-123456"
+    key            = "staging/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks-table"
+    encrypt        = true
+  }
+}

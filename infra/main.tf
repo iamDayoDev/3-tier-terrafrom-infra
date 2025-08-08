@@ -80,5 +80,4 @@ module "aws_ssm_parameter" {
   db_host_endpoint = module.database.db_host_endpoint
   db_database      = var.database_name
   depends_on       = [module.app_server]
-
 }
