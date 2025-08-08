@@ -68,7 +68,6 @@ module "database" {
   database_name        = var.database_name
   db_username          = var.db_username
   db_password          = var.db_password
-  db_allocated_storage = var.db_allocated_storage
   instance_class       = var.instance_class
   depends_on           = [module.vpc, module.sg]
 }

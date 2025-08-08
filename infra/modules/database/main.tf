@@ -7,7 +7,6 @@ resource "aws_rds_cluster" "aurora_mysql" {
     db_subnet_group_name   = aws_db_subnet_group.aurora_subnet_group.id
     database_name          = var.database_name
     vpc_security_group_ids = var.db_tier_sg_id
-    allocated_storage      = var.db_allocated_storage
     skip_final_snapshot    = true
 }
 

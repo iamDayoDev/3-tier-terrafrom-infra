@@ -92,10 +92,6 @@ variable "db_password" {
   type        = string
   default     = "password"
 }
-variable "db_allocated_storage" {
-  description = "Allocated storage for the RDS cluster in GB"
-  type        = number
-}
 variable "instance_class" {
   description = "Instance class for the RDS cluster instances"
   type        = string
