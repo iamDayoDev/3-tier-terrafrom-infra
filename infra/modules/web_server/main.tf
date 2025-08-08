@@ -2,7 +2,6 @@ resource "aws_launch_template" "web" {
     name_prefix   = "${var.project_name}-web"
     image_id      = data.aws_ami.amazon_linux_2023.id
     instance_type = var.web_instance_type
-    vpc_security_group_ids = [var.web_tier_sg_id]
     user_data = base64encode(templatefile("${path.module}/web.sh", {}))
 
     tag_specifications {
