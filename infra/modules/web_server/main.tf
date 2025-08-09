@@ -15,7 +15,6 @@ resource "aws_launch_template" "web" {
         name = var.instance_profile_name
     }
     network_interfaces {
-        subnet_id                 = var.public_subnet_ids[0]
         security_groups       = [var.web_tier_sg_id, var.external_alb_sg_id]
         associate_public_ip_address = true
     }
