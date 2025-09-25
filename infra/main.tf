@@ -25,6 +25,7 @@ module "alb" {
   internal_alb_sg_id = module.sg.internal_alb_sg_id
   external_alb_sg_id = module.sg.external_alb_sg_id
   private_subnet_ids = module.vpc.private_subnet_ids
+  public_subnet_ids  = module.vpc.public_subnet_ids
   depends_on         = [module.sg]
 }
 module "app_server" {
