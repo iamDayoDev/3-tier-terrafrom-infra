@@ -48,7 +48,7 @@ resource "aws_lb" "external_alb" {
     internal           = false
     load_balancer_type = "application"
     security_groups    = [var.external_alb_sg_id]
-    subnets            = var.private_subnet_ids
+    subnets            = var.public_subnet_ids
 
     tags = {
         Name = "${var.project_name}-external-alb"
