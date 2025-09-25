@@ -3,9 +3,9 @@ on:
   push:
     branches:
       - test
-  pull_request:
-    branches:
-      - main
+  # pull_request:
+  #   branches:
+  #     - main
   workflow_dispatch:
 jobs:
   terraform:
@@ -38,6 +38,6 @@ jobs:
         run: terraform plan
         working-directory: infra
 
-      - name: Apply Terraform changes
-        run: terraform apply -auto-approve
-        working-directory: infra
+      # - name: Apply Terraform changes
+      #   run: terraform apply -auto-approve
+      #   working-directory: infra
